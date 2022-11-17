@@ -1,4 +1,4 @@
-const API_END_POINT = process.env.API_URL;
+// const API_END_POINT = process.env.API_URL;
 
 //options: method 타입
 export const request = async (url, option = {}) => {
