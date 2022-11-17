@@ -1,0 +1,44 @@
+export default function SidebarList({ $target, initialState }) {
+  const $sidebarContainer = document.createElement("div");
+  $sidebarContainer.className = "notion-sidebar-container";
+
+  $target.appendChild($sidebarContainer);
+
+  this.state = initialState;
+
+  this.setState = (nextstate) => {
+    this.state = nextstate;
+    this.render();
+  };
+
+  this.render = () => {
+    $sidebarContainer.innerHTML = `
+      <div class="notion-sidebar">
+        <div class="home-button">Notion Home으로</div>
+        <div class="notion-scroller">
+          <nav>
+            ${this.state.documents
+              .map((document) => {
+                return `
+                <div class="notion-listItem">
+                  <div class="notion-focusable">
+                    <div class="notion-item-wrapper">
+                      <div class="toggle-button">
+                        <svg viewBox="0 0 12 12" class="chevronDownRoundedThick" style="display: block; fill: rgba(55, 53, 47, 0.35); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(-90deg); opacity: 1;"><path d="M6.02734 8.80274C6.27148 8.80274 6.47168 8.71484 6.66211 8.51465L10.2803 4.82324C10.4268 4.67676 10.5 4.49609 10.5 4.28125C10.5 3.85156 10.1484 3.5 9.72363 3.5C9.50879 3.5 9.30859 3.58789 9.15234 3.74902L6.03223 6.9668L2.90722 3.74902C2.74609 3.58789 2.55078 3.5 2.33105 3.5C1.90137 3.5 1.55469 3.85156 1.55469 4.28125C1.55469 4.49609 1.62793 4.67676 1.77441 4.82324L5.39258 8.51465C5.58789 8.71973 5.78808 8.80274 6.02734 8.80274Z"></path></svg>
+                      </div>
+                      <div class="title-wrapper">
+                        <div class="notranslate">
+                          ${document.title}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>`;
+              })
+              .join("")}
+          </nav>
+        </div>
+      </div>
+    `;
+  };
+}
