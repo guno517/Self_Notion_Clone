@@ -1,4 +1,4 @@
-// const API_END_POINT = process.env.API_URL;
+const API_END_POINT = "https://kdt-frontend.programmers.co.kr/documents";
 
 //options: method 타입
 export const request = async (url, option = {}) => {
